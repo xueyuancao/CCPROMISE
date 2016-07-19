@@ -3,7 +3,7 @@
 #> Package: CCPROMISE
 #> Type: Package
 #> Title: PROMISE analysis with Canonical Correlation for Two Forms of High Dimensional Genetic Data
-#> Version: 0.98.1
+#> Version: 0.99.1
 #> Author: Xueyuan Cao <xueyuan.cao@stjude.org> and Stanley.pounds <stanley.pounds@stjude.org>
 #> Maintainer: Xueyuan Cao <xueyuan.cao@stjude.org>
 #> Description: Perform Canonical correlation between two forms of high demensional genetic data, and associate the first compoent of each form of data with a specific biologically interesting pattern of associations with multiple endpoints of variables. A probe level analysis is also implemented.
@@ -38,7 +38,7 @@
 #>   \tabular{ll}{
 #>     Package: \tab CCPROMISE\cr
 #>     Type: \tab Package\cr
-#>     Version: \tab 0.98.1\cr
+#>     Version: \tab 0.99.1\cr
 #>     Date: \tab 2016-7-19\cr
 #>     License: \tab GPL (>=2)\cr
 #>     LazyLoad: \tab yes\cr
