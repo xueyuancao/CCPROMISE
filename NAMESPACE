@@ -1,0 +1,7 @@
+exportPattern("^([^.]|\\..+\\.)")
+export("CCPROMISE", "PrbPROMISE", "CANN")
+importFrom(CCP, p.perm, p.asym)
+importFrom(stats, cancor, cor.test, prcomp)
+importFrom(PROMISE, promise.genestat)
+importMethodsFrom(Biobase, exprs, pData, phenoData, ExpressionSet)
+importFrom(GSEABase, setName,  geneIds)

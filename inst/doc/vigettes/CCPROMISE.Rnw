@@ -1,0 +1,109 @@
+%\VignetteIndexEntry{An introduction to CCPROMISE}
+%\VignetteDepends{Biobase,PROMISE,CCP}
+%\VignetteKeywords{Microarray Integration Association Pattern}
+%\VignettePackage{CCPROMISE}
+\documentclass[]{article}
+
+\usepackage{times}
+\usepackage{hyperref}
+
+\newcommand{\Rpackage}[1]{{\textit{#1}}}
+
+\title{An Introduction to \Rpackage{CCPROMISE}}
+\author{Xueyuan Cao, Stanley Pounds}
+\date{May 26, 2016}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+<<options,echo=FALSE>>=
+options(width=60)
+@ 
+
+\section{Introduction}
+
+CCPROMISE, Canonical correlation with PROjection onto the Most Interesting Statistical Evidence, is a general procedure to integrate two forms of genomic features that 
+exhibit a specific biologically interesting pattern of association with multiple phenotypic endpoint variables. In biology, one type of genomic feature tends to regulate the other types. 
+For example, DNA methylation regulates gene expression. Biological knowledge of the endpoint variables is used to 
+define a vector that represents the biologically most interesting values for a set of association statistics. 
+The CCPROMISE performs one hypothesis test for each gene, and is flexible to accommodate two type of genomic features with various types of endpoints. 
+
+In this document, we describe how to perform CCPROMISE procedure using hypothetical example data sets provided with the package. 
+
+\section{Requirements}
+
+The PROMISE package depends on {\em Biobase}, {\em CCP}and {\em PROMISE}  The understanding of {\em ExpressionSet} is a prerequiste to 
+perform the CCPROMISE procedure. Due to the internal handling of multiple endpoints, the consistency of {\em ExpressionSet} is assumed.
+The detailed requirements are illustrated below.
+
+Load the CCPROMISE package and the example data sets: exmplESet, exmplMSet, exmplGeneSet, and exmplPat into R.
+
+<<Load CCPROMISE package and data>>=
+library(CCPROMISE)
+data(exmplESet)
+data(exmplMSet)
+data(exmplGeneSet)
+data(exmplPat)
+@
+
+The {\em ExpressionSet} should contain at least two components: {\em exprs} (array data) and {\em phenoData} (endpoint data).
+The subject id and order of {\em ESet} and {\em MSet} should be same.
+{\em exprs} is a data frame with column names representing the array identifiers (IDs) and row names representing the probe (genomic feature) IDs.
+{\em phenoData} is an {\em AnnotatedDataFrame} with column names representing the endpoint variables and row names representing array.
+The array IDs of {\em phenoData} and {\em exprs} should be matched.
+
+The association pattern definition is critical. The prior biological knowledge is required to define the vector that represents the biologically most interesting values for statistics. In this hypothetical example, we are interested in identifying genomic features that are negatively associated with drug level to kill 50\% cells, negatively associated with disease, and negatively 
+associated with rate of events. The three endpoints are represented in three rows as shown below:
+
+<<Display phPatt>>=
+exmplPat
+@
+
+\section{CCPROMISE Analysis}
+As mentioned in section 2, the {\em ExpressionSet} of two forms of genomic data and pattern definition are required by CCPROMISE procedure. 
+The code below performs a CCPROMISE analysis at gene level with fast permutation based on negative binomial.
+<<CCPROMISE at gene level, results=hide>>=
+test1 <- CCPROMISE(geneSet=exmplGeneSet, 
+              ESet=exmplESet, 
+              MSet=exmplMSet, 
+              promise.pattern=exmplPat,                                            
+              strat.var=NULL,
+              prlbl=c('LC50', 'MRD22', 'EFS', 'PR3'), 
+              EMlbl=c("Expr", "Methyl"), 
+              nbperm=TRUE,
+              max.ntail=10,
+              nperms=100,
+              seed=13)
+@
+Gene level result:
+<<Gene Level Result>>=
+head(test1$PRres)
+@
+
+The code below performs a prbPROMISE analysis at probe pair level with fast permutation. 
+<<PROMISE at probe pair level>>=
+test2 <- PrbPROMISE(geneSet=exmplGeneSet, 
+              ESet=exmplESet, 
+              MSet=exmplMSet, 
+              promise.pattern=exmplPat,
+              strat.var=NULL,
+              prlbl=c('LC50', 'MRD22', 'EFS', 'PR3'), 
+              EMlbl=c("Expr", "Methyl"),
+              nbperm=TRUE,
+              max.ntail=10,
+              nperms=100,
+              seed=13)
+@
+Probe pair level correlation result at p value cut off 0.05:
+<<Gene Level Result>>=
+head(test2$CORres)
+@
+Probe pair level PROMISE result of probe pair at p value cut off 0.05 as above:
+<<Gene Level Result>>=
+head(test2$PRres)
+@
+
+\end{document}
+
