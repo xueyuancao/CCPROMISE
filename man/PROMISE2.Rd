@@ -26,3 +26,19 @@ PROMISE2 (exprSet, exprSet2, geneSet = NULL, promise.pattern,
  }
  \author{Xueyuan Cao \email{Xueyuan.cao@stjude.org}, Stanley Pounds \email{stanley.pounds@stjude.org}}
  \seealso{\code{\link{CCPROMISE}}}
+ \examples{
+  ## load data
+  data(exmplESet)
+  data(exmplMSet)
+  data(exmplGeneSet)
+  data(exmplPat)
+  ## Perform canonical correlation test
+ test<- PROMISE2(exmplESet[1:10], 
+                 exmplMSet[1:10], 
+                 promise.pattern=exmplPat,
+                 strat.var=NULL,
+                 nbperm=FALSE,
+                 max.ntail=10,
+                 nperms=100,
+                 seed=13)   
+ }

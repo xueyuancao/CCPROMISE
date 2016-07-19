@@ -1,6 +1,6 @@
 \name{CCPROMISE-package}
 \alias{CCPROMISE-package}
- \Rdversion{3.3.0}
+ \Rdversion{3.3.1}
  \docType{package}
  \title{
    PRojection Onto the Most Interesting Statistical Evidence with Canonical Correlation
@@ -13,8 +13,8 @@
    \tabular{ll}{
      Package: \tab CCPROMISE\cr
      Type: \tab Package\cr
-     Version: \tab 1.0.0\cr
-     Date: \tab 2015-6-8\cr
+     Version: \tab 0.98.1\cr
+     Date: \tab 2016-7-19\cr
      License: \tab GPL (>=2)\cr
      LazyLoad: \tab yes\cr
    }

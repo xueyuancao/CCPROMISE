@@ -3,13 +3,13 @@
 #> Package: CCPROMISE
 #> Type: Package
 #> Title: PROMISE analysis with Canonical Correlation for Two Forms of High Dimensional Genetic Data
-#> Version: 1.0
+#> Version: 0.98.1
 #> Author: Xueyuan Cao <xueyuan.cao@stjude.org> and Stanley.pounds <stanley.pounds@stjude.org>
 #> Maintainer: Xueyuan Cao <xueyuan.cao@stjude.org>
 #> Description: Perform Canonical correlation between two forms of high demensional genetic data, and associate the first compoent of each form of data with a specific biologically interesting pattern of associations with multiple endpoints of variables. A probe level analysis is also implemented.
-#> Depends: R (>= 2.15.0), CCP, PROMISE, Biobase, GSEABase
+#> Depends: R (>= 3.3.0), stats, methods, CCP, PROMISE, Biobase, GSEABase
 #> License: GPL (>= 2)
-#> biocViews: Microarray, Bioinformatics, Gene expression
+#> biocViews: Microarray, GeneExpression
 #> LazyLoad: yes
 #> END DESCRIPTION
 
@@ -20,11 +20,12 @@
 #> importFrom(stats, cancor, cor.test, prcomp)
 #> importFrom(PROMISE, promise.genestat)
 #> importMethodsFrom(Biobase, exprs, pData, phenoData, ExpressionSet)
+#> importFrom(methods, new)
 #> importFrom(GSEABase, setName,  geneIds)
 #> END NAMESPACE
 
 #> BEGIN CCPROMISE-package
-#> \Rdversion{3.3.0}
+#> \Rdversion{3.3.1}
 #> \docType{package}
 #> \title{
 #>   PRojection Onto the Most Interesting Statistical Evidence with Canonical Correlation
@@ -37,8 +38,8 @@
 #>   \tabular{ll}{
 #>     Package: \tab CCPROMISE\cr
 #>     Type: \tab Package\cr
-#>     Version: \tab 1.0.0\cr
-#>     Date: \tab 2015-6-8\cr
+#>     Version: \tab 0.98.1\cr
+#>     Date: \tab 2016-7-19\cr
 #>     License: \tab GPL (>=2)\cr
 #>     LazyLoad: \tab yes\cr
 #>   }
@@ -89,6 +90,7 @@
 #> \title{Example of Gene Annotation}
 #> \description{An exmple of gene set collection to annotate both form of genomic data to genes. The gene names can be extracted by method of setName() and probe ids can be extracted by method of geneIds()}
 #> \usage{data(exmplGeneSet)}
+#> \value{a gene set collection}
 #> \keyword{misc}
 #> END exmplGeneSet
 
@@ -96,6 +98,7 @@
 #> \title{Example of Expression Set}
 #> \description{an ExpressionSet class contains minimum of exprs (expression matrix) of gene expression and phenoData (AnnotatedDataFrame of end point data).}
 #> \usage{data(exmplESet)}
+#> \value{an ExpressionSet}
 #> \keyword{misc}
 #> END exmplESet
 
@@ -103,6 +106,7 @@
 ##> \title{Example of Methylation Set}
 #> \description{an ExpressionSet class contains minimum of exprs (matrix) of DNA methylation and phenoData (AnnotatedDataFrame of end point data).}
 #> \usage{data(exmplMSet)}
+#> \value{an ExpressionSet}
 #> \keyword{misc}
 #> END exmplMSet
 
@@ -110,6 +114,7 @@
 #> \title{Example of Phenotype Pattern Definition Set}
 #> \description{An exmple of phenotype pattern definition set with three columns: stat.coef, stat.func, and endpt.vars; It defines an association pattern for three phenotypes.}
 #> \usage{data(exmplPat)}
+#> \value{a data frame}
 #> \keyword{misc}
 #> END exmplPat
 
@@ -155,6 +160,13 @@ datSel<-function(dat,           #> \item{dat}{a data frame of genetic data with 
 #> \details{The function extract the genetic data for a gene according to probe names that are annotated the gene. 
 #>  The function is internally called by \emph{CANN}.}
 #> \value{a data frame}
+#> \examples{
+#>  ## load  exmplMSet exmplGeneSet
+#>  data(exmplMSet)
+#>  data(exmplGeneSet)
+#>  ## sel Methylation data corresponding to first gene set
+#>  seldata<-datSel(exprs(exmplMSet), geneIds(exmplGeneSet[[1]])) 
+#> }
 #> END datSel
 
 ##############################################################################
@@ -358,7 +370,7 @@ PROMISE2<- function (exprSet,            #> \item{exprSet}{expression set of fir
         dimnames(gene.res1)[[2]]<-paste(dimnames(gene.res1)[[2]], "_1", sep="")
         dimnames(gene.res2)[[2]]<-paste(dimnames(gene.res2)[[2]], "_2", sep="")
         gene.resf<-cbind(gene.res1, gene.res2, 
-                    PROMISE.stat=apply(cbind(gene.res1[, ncol(gene.res1)], gene.res2[, ncol(gene.res2)]), 1, function(prb){return(mean(prb, na.rm=T))}))
+                    PROMISE.stat=apply(cbind(gene.res1[, ncol(gene.res1)], gene.res2[, ncol(gene.res2)]), 1, function(prb){return(mean(prb, na.rm=TRUE))}))
         
         m.nph <- dim(gene.resf)
         gene.pvals <- matrix(0, m.nph[1], m.nph[2])
@@ -391,7 +403,7 @@ PROMISE2<- function (exprSet,            #> \item{exprSet}{expression set of fir
                dimnames(gene.temp1)[[2]]<-paste(dimnames(gene.temp1)[[2]], "_1", sep="")
                dimnames(gene.temp2)[[2]]<-paste(dimnames(gene.temp2)[[2]], "_2", sep="")
                gene.tempf<-cbind(gene.temp1, gene.temp2, 
-                        PROMISE.stat=apply(cbind(gene.temp1[, ncol(gene.temp1)], gene.temp2[, ncol(gene.temp2)]), 1, function(prb){return(mean(prb, na.rm=T))}))
+                        PROMISE.stat=apply(cbind(gene.temp1[, ncol(gene.temp1)], gene.temp2[, ncol(gene.temp2)]), 1, function(prb){return(mean(prb, na.rm=TRUE))}))
                                                    
                gene.pvals <- gene.pvals + (abs(gene.tempf) >= abs(gene.resf))
            }
@@ -403,8 +415,8 @@ PROMISE2<- function (exprSet,            #> \item{exprSet}{expression set of fir
        }
        if (nbperm){
            #set up tracking
-           probe.keep <- rep(T, nprobes)
-           probe.done <- rep(F, nprobes)
+           probe.keep <- rep(TRUE, nprobes)
+           probe.done <- rep(FALSE, nprobes)
            probe.ntail <- matrix(0, m.nph[1], m.nph[2])
            probe.apt.ntail <- rep(0, m.nph[1])
            num.perms <- rep(NA, nprobes)
@@ -433,7 +445,7 @@ PROMISE2<- function (exprSet,            #> \item{exprSet}{expression set of fir
                 dimnames(gene.temp1)[[2]]<-paste(dimnames(gene.temp1)[[2]], "_1", sep="")
                 dimnames(gene.temp2)[[2]]<-paste(dimnames(gene.temp2)[[2]], "_2", sep="")
                 gene.tempf<-cbind(gene.temp1, gene.temp2, 
-                        PROMISE.stat=apply(cbind(gene.temp1[, ncol(gene.temp1)], gene.temp2[, ncol(gene.temp2)]), 1, function(prb){return(mean(prb, na.rm=T))}))
+                        PROMISE.stat=apply(cbind(gene.temp1[, ncol(gene.temp1)], gene.temp2[, ncol(gene.temp2)]), 1, function(prb){return(mean(prb, na.rm=TRUE))}))
  
                 probe.ntail[probe.keep, ] <- probe.ntail[probe.keep, 
                   ] + (abs(gene.tempf) >= abs(gene.resf[probe.keep, 
@@ -445,7 +457,7 @@ PROMISE2<- function (exprSet,            #> \item{exprSet}{expression set of fir
                 num.perms[probe.done & probe.keep] <- i
                 gene.pvals[probe.done & probe.keep, ] <- probe.ntail[probe.done & 
                   probe.keep, ]/i
-                probe.keep[probe.done] <- F
+                probe.keep[probe.done] <- FALSE
             }
             if (any(probe.keep)) {
                 gene.pvals[probe.keep, ] <- probe.ntail[probe.keep, 
@@ -469,6 +481,23 @@ PROMISE2<- function (exprSet,            #> \item{exprSet}{expression set of fir
 #> }
 #> \author{Xueyuan Cao \email{Xueyuan.cao@stjude.org}, Stanley Pounds \email{stanley.pounds@stjude.org}}
 #> \seealso{\code{\link{CCPROMISE}}}
+#> \examples{
+#>  ## load data
+#>  data(exmplESet)
+#>  data(exmplMSet)
+#>  data(exmplGeneSet)
+#>  data(exmplPat)
+
+#>  ## Perform canonical correlation test
+#> test<- PROMISE2(exmplESet[1:10], 
+#>                 exmplMSet[1:10], 
+#>                 promise.pattern=exmplPat,
+#>                 strat.var=NULL,
+#>                 nbperm=FALSE,
+#>                 max.ntail=10,
+#>                 nperms=100,
+#>                 seed=13)   
+#> }
 #> END PROMISE2
 
 ##############################################################################
@@ -638,7 +667,7 @@ PrbCor<-function(geneSet,     #> \item{geneSet}{a gene set collection to annotat
          msign<-apply(thisMthyl2, 2, function(prb, corsign){
                        return(prb*corsign)}, sign(spres[, 1]))
          if (is.vector(msign)) msign<-matrix(msign, nrow=1, ncol=length(msign))
-         tt.gen<-cbind(matrix(rep(as.numeric(thisExpr2[k, ]), nrow(thisMthyl2)), nrow=nrow(thisMthyl2), ncol=ncol(thisExpr2), byrow=T), msign)
+         tt.gen<-cbind(matrix(rep(as.numeric(thisExpr2[k, ]), nrow(thisMthyl2)), nrow=nrow(thisMthyl2), ncol=ncol(thisExpr2), byrow=TRUE), msign)
          rownames(tt.gen)<-paste(rownames(thisExpr2)[k],rownames(spres), sep='*')
          tt.gen2<-cbind(rownames(tt.gen), tt.gen) 
          this.res<-rbind(this.res, tt.res)
@@ -704,7 +733,7 @@ PrbPROMISE<-function(geneSet,                   #> \item{geneSet}{a gene set col
                   seed=13)                      #> \item{seed}{initial seed of random number generator. The default is 13.}
                                                 #> }
 {
-  options(stringsAsFactors=F)
+  options(stringsAsFactors=FALSE)
   Edat<-exprs(ESet)
   Mdat<-exprs(MSet)
   pheDat<-phenoData(ESet)

@@ -13,3 +13,10 @@ datSel (dat, thisPrb, prbcol = TRUE)
  \details{The function extract the genetic data for a gene according to probe names that are annotated the gene. 
   The function is internally called by \emph{CANN}.}
  \value{a data frame}
+ \examples{
+  ## load  exmplMSet exmplGeneSet
+  data(exmplMSet)
+  data(exmplGeneSet)
+  ## sel Methylation data corresponding to first gene set
+  seldata<-datSel(exprs(exmplMSet), geneIds(exmplGeneSet[[1]])) 
+ }
