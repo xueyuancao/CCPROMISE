@@ -11,7 +11,11 @@
 
 \title{An Introduction to \Rpackage{CCPROMISE}}
 \author{Xueyuan Cao, Stanley Pounds}
+<<<<<<< HEAD
 \date{October 10, 2016}
+=======
+\date{July 18, 2016}
+>>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
@@ -34,8 +38,12 @@ In this document, we describe how to perform CCPROMISE procedure using hypotheti
 
 \section{Requirements}
 
+<<<<<<< HEAD
 The CCPROMISE package extends our former PROMISE package to integrate two forms of molecular data with multiple biologically related endpoints in gene level or probe set level. 
 The understanding of {\em ExpressionSet} is a prerequiste to 
+=======
+The PROMISE package depends on {\em Biobase}, {\em CCP}and {\em PROMISE}  The understanding of {\em ExpressionSet} is a prerequiste to 
+>>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
 perform the CCPROMISE procedure. Due to the internal handling of multiple endpoints, the consistency of {\em ExpressionSet} is assumed.
 The detailed requirements are illustrated below.
 

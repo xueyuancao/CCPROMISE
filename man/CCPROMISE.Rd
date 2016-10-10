@@ -22,6 +22,7 @@ CCPROMISE (geneSet, ESet, MSet, promise.pattern, strat.var = NULL,
  }
  \details{The function performs PROMISE analysis for two forms of genomic data in minimal expression set format with a prefined phenotypic pattern. It calls two external function 
  \emph{CANN} and \emph{PROMISE2}}
+<<<<<<< HEAD
  \value{ The output is a list of length 4. The 4 components are as following:
        \item{PRres}{PROMISE result for the first component of canonical correlation between two forms of geneomic data.
            individual genes' test statistics and p-values for each individual endpoint and PROMISE analysis}
@@ -32,13 +33,28 @@ CCPROMISE (geneSet, ESet, MSet, promise.pattern, strat.var = NULL,
            second column is the probeset ids of first form genomic data seperated by '|', third column is the load for each probeset in first form genomic data seperated by '|',  
            fourth column is the probeset ids of second form genomic data seperated by '|', fifth column is the load for each probeset in second form genomic data seperated by '|')}
        \item{CCload}{a data frame of loading (each row is for a gene, first column is gene names, 
+=======
+ \value{
+       \item{$PRres}{PROMISE result for the first component of canonical correlation between two forms of geneomic data.
+           individual genes' test statistics and p-values for each individual endpoint and PROMISE analysis}
+       \item{$CANres}{result of canonical correlation analysis with six columns: Gene: Gene names; n.EMlbl[1]: number of probe set in the first form data; 
+           n.EMlbl[2]: number of probe set in the second form data; CanonicalCR: Canonical correlation of first components; WilksPermPval: permuatation p value of Wilks' Lambda;
+           WilksAsymPval: p value of F-approximations of Wilks' Lambda.}  
+       \item{$FSTgen}{load of first component: a data frame of loading (each row is for a gene, first column is gene names, 
+           second column is the probeset ids of first form genomic data seperated by '|', third column is the load for each probeset in first form genomic data seperated by '|',  
+           fourth column is the probeset ids of second form genomic data seperated by '|', fifth column is the load for each probeset in second form genomic data seperated by '|')}
+       \item{$CANload}{a data frame of loading (each row is for a gene, first column is gene names, 
+>>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
            second column is the probeset ids of first form genomic data seperated by '|', third column is the load for each probeset in first form genomic data seperated by '|',  
            fourth column is the probeset ids of second form genomic data seperated by '|', fifth column is the load for each probeset in second form genomic data seperated by '|')}
  }
  \author{Xueyuan Cao \email{Xueyuan.cao@stjude.org}, Stanley Pounds \email{stanley.pounds@stjude.org}}
+<<<<<<< HEAD
  \references{Xueyuan Cao, Kristine R. Crews, James Downing, Jatinder Lamba and Stanley B. Pounds (2016) 
              CC-PROMISE effectively integrates two forms of molecular data with multiple biologically related endpoint. 
              BMC Bioinformatics 17(Suppl 13):382}
+=======
+>>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
  \seealso{\code{\link{CANN}} \code{\link{PROMISE2}}}
  \examples{
   ## load data

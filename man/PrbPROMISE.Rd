@@ -23,10 +23,17 @@ PrbPROMISE (geneSet, ESet, MSet, promise.pattern, strat.var = NULL,
  }
  \details{The function performs PROMISE analysis for two forms of genomic data in minimal expression set format with a prefined phenotypic pattern. It calls two external function 
  \emph{PrbCor} and \emph{PROMISE2}}
+<<<<<<< HEAD
  \value{The output of the function is a list of length 2. The 2 components are as following:
        \item{PRres}{PROMISE result for the first component of canonical correlation between two forms of geneomic data.
            individual genes' test statistics and p-values for each individual endpoint and PROMISE analysis}
        \item{CORres}{result of spearman correlation analysis of probe pairs within a gene with five columns: Gene: Gene names; EMlbl[1]: probe id in the first form data; 
+=======
+ \value{
+       \item{$PRres}{PROMISE result for the first component of canonical correlation between two forms of geneomic data.
+           individual genes' test statistics and p-values for each individual endpoint and PROMISE analysis}
+       \item{$CORres}{result of spearman correlation analysis of probe pairs within a gene with five columns: Gene: Gene names; EMlbl[1]: probe id in the first form data; 
+>>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
            EMlbl[2]: probe id in the second form data; Spearman.rstat: Spearman r statistics; Spearman.p: Spearman p value.}  
  }
  \author{Xueyuan Cao \email{Xueyuan.cao@stjude.org}, Stanley Pounds \email{stanley.pounds@stjude.org}}

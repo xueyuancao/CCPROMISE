@@ -18,10 +18,17 @@ PrbCor (geneSet, Edat, Mdat, EMlbl = c("Expr", "Methyl"), phdat,
            If a gene only has one form of genomic data, the other form is coded as NA.  
            The function return a list of two components. See \emph{value} for details.  
  }
+<<<<<<< HEAD
  \value{The output of the function is a list of length 2. The 2 components are as following:
        \item{res}{spearman correlation result: a data frame with row for each probe pair with correlation p value < pcut and five columns Gene: Gene: Gene names; EMlbl[1]: probe id in the first form data; 
            EMlbl[2]: probe id in the second form data; Spearman.rstat: Spearman r statistics; Spearman.p: Spearman p value.}
        \item{gen}{Probe level data: a data frame with row for each probe pairs, first half of columns for first form genomic 
+=======
+ \value{
+       \item{$res}{spearman correlation result: a data frame with row for each probe pair with correlation p value < pcut and five columns Gene: Gene: Gene names; EMlbl[1]: probe id in the first form data; 
+           EMlbl[2]: probe id in the second form data; Spearman.rstat: Spearman r statistics; Spearman.p: Spearman p value.}
+       \item{$gen}{Probe level data: a data frame with row for each probe pairs, first half of columns for first form genomic 
+>>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
            data and second half of columns for second form genomic data with sign reflecting the correlation of the probe pair.}
  }
  \author{Xueyuan Cao \email{Xueyuan.cao@stjude.org}, Stanley Pounds \email{stanley.pounds@stjude.org}}
