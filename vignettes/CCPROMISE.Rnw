@@ -11,12 +11,7 @@
 
 \title{An Introduction to \Rpackage{CCPROMISE}}
 \author{Xueyuan Cao, Stanley Pounds}
-<<<<<<< HEAD
 \date{October 10, 2016}
-=======
-\date{July 18, 2016}
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
-
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
@@ -28,22 +23,22 @@ options(width=60)
 
 \section{Introduction}
 
-CCPROMISE, Canonical correlation with PROjection onto the Most Interesting Statistical Evidence, is a general procedure to integrate two forms of genomic features that 
-exhibit a specific biologically interesting pattern of association with multiple phenotypic endpoint variables. In biology, one type of genomic feature tends to regulate the other types. 
+CCPROMISE, Canonical correlation with PROjection onto the Most Interesting Statistical Evidence, 
+is a general procedure to integrate two forms of genomic features that 
+exhibit a specific biologically interesting pattern of association with multiple phenotypic endpoint variables. 
+In biology, one type of genomic feature tends to regulate the other types. 
 For example, DNA methylation regulates gene expression. Biological knowledge of the endpoint variables is used to 
 define a vector that represents the biologically most interesting values for a set of association statistics. 
-The CCPROMISE performs one hypothesis test for each gene, and is flexible to accommodate two type of genomic features with various types of endpoints. 
+The CCPROMISE performs one hypothesis test for each gene, and is flexible to accommodate two type of genomic features 
+with various types of endpoints. 
 
 In this document, we describe how to perform CCPROMISE procedure using hypothetical example data sets provided with the package. 
 
 \section{Requirements}
 
-<<<<<<< HEAD
-The CCPROMISE package extends our former PROMISE package to integrate two forms of molecular data with multiple biologically related endpoints in gene level or probe set level. 
+The CCPROMISE package extends our former PROMISE package to integrate two forms of molecular data 
+with multiple biologically related endpoints in gene level or probe set level. 
 The understanding of {\em ExpressionSet} is a prerequiste to 
-=======
-The PROMISE package depends on {\em Biobase}, {\em CCP}and {\em PROMISE}  The understanding of {\em ExpressionSet} is a prerequiste to 
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
 perform the CCPROMISE procedure. Due to the internal handling of multiple endpoints, the consistency of {\em ExpressionSet} is assumed.
 The detailed requirements are illustrated below.
 
@@ -63,7 +58,10 @@ The subject id and order of {\em ESet} and {\em MSet} should be same.
 {\em phenoData} is an {\em AnnotatedDataFrame} with column names representing the endpoint variables and row names representing array.
 The array IDs of {\em phenoData} and {\em exprs} should be matched.
 
-The association pattern definition is critical. The prior biological knowledge is required to define the vector that represents the biologically most interesting values for statistics. In this hypothetical example, we are interested in identifying genomic features that are negatively associated with drug level to kill 50\% cells, negatively associated with disease, and negatively 
+The association pattern definition is critical. The prior biological knowledge is required to define the vector 
+that represents the biologically most interesting values for statistics. 
+In this hypothetical example, we are interested in identifying genomic features that are negatively associated with drug level to 
+kill 50\% cells, negatively associated with disease, and negatively 
 associated with rate of events. The three endpoints are represented in three rows as shown below:
 
 <<Display phPatt>>=

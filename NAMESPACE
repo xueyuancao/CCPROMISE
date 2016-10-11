@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 export("CCPROMISE", "PrbPROMISE", "CANN", "PROMISE2", "PrbCor")
-=======
-exportPattern("^([^.]|\\..+\\.)")
-export("CCPROMISE", "PrbPROMISE", "CANN")
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
 importFrom(CCP, p.perm, p.asym)
 importFrom(stats, cancor, cor.test, prcomp)
 importFrom(PROMISE, promise.genestat)
 importMethodsFrom(Biobase, exprs, pData, phenoData, ExpressionSet)
 importFrom(methods, new)
 importFrom(GSEABase, setName,  geneIds)
-<<<<<<< HEAD
 importFrom(utils, capture.output)
-=======
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
+

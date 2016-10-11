@@ -20,15 +20,9 @@ PROMISE2 (exprSet, exprSet2, geneSet = NULL, promise.pattern,
  }
  \details{The function performs PROMISE analysis for two set genomic data with a prefined phenotypic pattern. It is intermediate function called by \emph{CCPROMISE} 
   to perform PROMISE analysis with canonical correlation}
-<<<<<<< HEAD
  \value{The output of the function is a list of length 2. The 2 components are as following:
        \item{generes}{individual genes' test statistics and p-values for each individual endpoint and PROMISE analysis.}  
        \item{setres}{Gene set level analysis is not implemented with value \emph{NULL}} 
-=======
- \value{
-       \item{$generes}{individual genes' test statistics and p-values for each individual endpoint and PROMISE analysis.}  
-       \item{$setres}{Gene set level analysis is not implemented with value \emph{NULL}} 
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
  }
  \author{Xueyuan Cao \email{Xueyuan.cao@stjude.org}, Stanley Pounds \email{stanley.pounds@stjude.org}}
  \seealso{\code{\link{CCPROMISE}}}

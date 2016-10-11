@@ -1,19 +1,9 @@
 Package: CCPROMISE
 Type: Package
 Title: PROMISE analysis with Canonical Correlation for Two Forms of High Dimensional Genetic Data
-<<<<<<< HEAD
 Version: 0.99.2
 Author: Xueyuan Cao <xueyuan.cao@stjude.org> and Stanley.pounds <stanley.pounds@stjude.org>
 Maintainer: Xueyuan Cao <xueyuan.cao@stjude.org>
 Description: Perform Canonical correlation between two forms of high demensional genetic data, and associate the first compoent of each form of data with a specific biologically interesting pattern of associations with multiple endpoints. A probe level analysis is also implemented.
 Depends: R (>= 3.3.0), stats, methods, CCP, PROMISE, Biobase, GSEABase, utils
-=======
-Version: 0.99.1
-Author: Xueyuan Cao <xueyuan.cao@stjude.org> and Stanley.pounds <stanley.pounds@stjude.org>
-Maintainer: Xueyuan Cao <xueyuan.cao@stjude.org>
-Description: Perform Canonical correlation between two forms of high demensional genetic data, and associate the first compoent of each form of data with a specific biologically interesting pattern of associations with multiple endpoints of variables. A probe level analysis is also implemented.
-Depends: R (>= 3.3.0), stats, methods, CCP, PROMISE, Biobase, GSEABase
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
-License: GPL (>= 2)
-biocViews: Microarray, GeneExpression
-LazyLoad: yes
+

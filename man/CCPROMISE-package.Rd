@@ -13,12 +13,8 @@
    \tabular{ll}{
      Package: \tab CCPROMISE\cr
      Type: \tab Package\cr
-<<<<<<< HEAD
      Version: \tab 0.99.2\cr
-=======
-     Version: \tab 0.99.1\cr
->>>>>>> 5b4c40047f362e5ec59f764ac963f67c77446a2d
-     Date: \tab 2016-7-19\cr
+     Date: \tab 2016-10-10\cr
      License: \tab GPL (>=2)\cr
      LazyLoad: \tab yes\cr
    }
@@ -33,6 +29,10 @@
       Maintainer: Xueyuan Cao \email{xueyuan.cao@stjude.org}
  }
  \references{
+  Cao X, Crews KR, Downing J, Lamba J and Pounds XB (2016) 
+  CC-PROMISE effectively integrates two forms of molecular data with multiple biologically related endpoint. 
+  BMC Bioinformatics 17(Suppl 13):382
+             
   Hotelling H. (1936). Relations between two sets of variables. Biometrika, 28, 321-327
   
   Pounds S, Cheng C, Cao X, Crews KR, Plunkett W, Gandhi V, Rubnitz J, Ribeiro RC, Downing JR, and Lamba J (2009) 
