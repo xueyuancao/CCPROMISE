@@ -13,8 +13,8 @@
    \tabular{ll}{
      Package: \tab CCPROMISE\cr
      Type: \tab Package\cr
-     Version: \tab 0.99.2\cr
-     Date: \tab 2016-10-10\cr
+     Version: \tab 0.99.3\cr
+     Date: \tab 2016-10-11\cr
      License: \tab GPL (>=2)\cr
      LazyLoad: \tab yes\cr
    }
