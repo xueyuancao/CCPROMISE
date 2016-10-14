@@ -9,4 +9,3 @@ Depends: R (>= 3.3.0), stats, methods, CCP, PROMISE, Biobase, GSEABase, utils
 License: GPL (>= 2)
 biocViews: Microarray, GeneExpression
 LazyLoad: yes
-
